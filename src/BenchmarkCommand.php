@@ -45,6 +45,8 @@ class BenchmarkCommand extends Command
 
                 $executionTime = $endTime - $startTime;
             } else {
+                echo $process->getErrorOutput();
+
                 $executionTime = -1;
             }
 
