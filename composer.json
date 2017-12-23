@@ -1,0 +1,14 @@
+{
+    "autoload": {
+        "psr-4": {
+            "Spatie\\Async\\Benchmark\\": "src"
+        }
+    },
+    "require": {
+        "spatie/async": "dev-symfony-process",
+        "guzzlehttp/guzzle": "^6.3",
+        "symfony/console": "^4.0",
+        "larapack/dd": "^1.1",
+        "amphp/parallel-functions": "^0.1.2"
+    }
+}
