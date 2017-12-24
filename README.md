@@ -11,3 +11,4 @@ php console.php benchmark <benchmark>
 - `2/spatie`
 - `3/amp`
 - `3/spatie`
+- `3/react`
