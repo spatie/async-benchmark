@@ -9,6 +9,7 @@
         "guzzlehttp/guzzle": "^6.3",
         "symfony/console": "^4.0",
         "larapack/dd": "^1.1",
-        "amphp/parallel-functions": "^0.1.2"
+        "amphp/parallel-functions": "^0.1.2",
+        "react/child-process": "^0.5.1"
     }
 }
