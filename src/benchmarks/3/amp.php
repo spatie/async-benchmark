@@ -2,19 +2,16 @@
 
 require_once __DIR__ . '/../../bootstrap.php';
 
-use function Amp\ParallelFunctions\parallelMap;
-use function Amp\Promise\wait;
+use Amp\Process\Process;
 
-$promises = parallelMap(range(1, 30), function ($i) {
-    $sleep = 1;
+$script = escapeshellarg(__DIR__ . '/child-process.php');
 
-    if ($i % 2 === 0) {
-        $sleep = 2;
-    } else if ($i % 3 === 0) {
-        $sleep = 3;
-    }
+for ($i = 1; $i <= 50; $i++) {
+    $process = new Process("exec php {$script} {$i}");
+    $process->start();
 
-    sleep($sleep);
-});
+    $promises[] = $process->join();
+    $processes[] = $process;
+}
 
-$result = wait($promises);
+Amp\Promise\wait(Amp\Promise\all($promises));

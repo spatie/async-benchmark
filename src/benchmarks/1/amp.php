@@ -2,13 +2,18 @@
 
 require_once __DIR__ . '/../../bootstrap.php';
 
-use function Amp\ParallelFunctions\parallelMap;
-use function Amp\Promise\wait;
+Amp\Parallel\Worker\pool(new Amp\Parallel\Worker\DefaultPool(16));
 
-$promises = parallelMap(range(1, 50), function () {
-    sleep(1);
+$counter = 0;
 
-    return 2;
-});
+for ($i = 1; $i <= 50; $i++) {
+    $promises[] = Amp\ParallelFunctions\parallel(function () {
+        sleep(1);
 
-$result = wait($promises);
+        return 2;
+    })->onResolve(function ($error, $output) use (&$counter) {
+        $counter += $output;
+    });
+}
+
+Amp\Promise\wait(Amp\Promise\all($promises));

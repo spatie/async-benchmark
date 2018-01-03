@@ -2,12 +2,11 @@
 
 require_once __DIR__ . '/../../bootstrap.php';
 
-use Spatie\Async\Pool;
-
-$pool = Pool::create();
+$pool = Spatie\Async\Pool::create();
+$pool->concurrency(16);
 $counter = 0;
 
-for ($i = 1; $i <= 30; $i++) {
+for ($i = 1; $i <= 50; $i++) {
     $pool[] = async(function () {
         sleep(1);
 

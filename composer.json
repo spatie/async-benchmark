@@ -5,11 +5,13 @@
         }
     },
     "require": {
-        "spatie/async": "dev-symfony-process",
+        "spatie/async": "dev-master",
         "guzzlehttp/guzzle": "^6.3",
         "symfony/console": "^4.0",
         "larapack/dd": "^1.1",
+        "amphp/artax": "^3",
         "amphp/parallel-functions": "^0.1.2",
+        "amphp/sync": "^1",
         "react/child-process": "^0.5.1"
     }
 }

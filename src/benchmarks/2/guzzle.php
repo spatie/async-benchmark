@@ -8,7 +8,7 @@ use GuzzleHttp\Pool;
 $client = new Client();
 
 $requests = function ($total) use ($client) {
-    $uri = 'https://www.google.be';
+    $uri = 'https://www.example.com/';
 
     for ($i = 0; $i < $total; $i++) {
         yield function() use ($client, $uri) {
@@ -17,7 +17,9 @@ $requests = function ($total) use ($client) {
     }
 };
 
-$pool = new Pool($client, $requests(20));
+$pool = new Pool($client, $requests(50), [
+    'concurrency' => 16,
+]);
 
 $promise = $pool->promise();
 

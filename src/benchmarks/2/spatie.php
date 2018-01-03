@@ -7,12 +7,13 @@ use Spatie\Async\Pool;
 
 $pool = Pool::create()
     ->autoload(__DIR__ . '/../../../vendor/autoload.php');
+$pool->concurrency(16);
 
-for ($i = 1; $i <= 20; $i++) {
+for ($i = 1; $i <= 50; $i++) {
     $pool[] = async(function () {
         $client = new Client();
 
-        return $client->get('https://www.google.be');
+        return $client->get('https://www.example.com/');
     });
 }
 
