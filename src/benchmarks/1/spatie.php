@@ -6,7 +6,7 @@ $pool = Spatie\Async\Pool::create();
 $pool->concurrency(16);
 $counter = 0;
 
-for ($i = 1; $i <= 500; $i++) {
+for ($i = 1; $i <= 50; $i++) {
     $pool[] = async(function () {
         return 2;
     })->then(function ($output) use (&$counter) {
