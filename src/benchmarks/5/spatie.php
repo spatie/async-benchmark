@@ -6,7 +6,7 @@ use Spatie\Async\Pool;
 
 $pool = Pool::create();
 
-foreach (range(1, 50) as $i) {
+foreach (range(1, 10) as $i) {
     $pool[] = async(function () use ($i) {
         $sleep = 1;
 
@@ -16,7 +16,7 @@ foreach (range(1, 50) as $i) {
             $sleep = 3;
         }
 
-        sleep($sleep);
+        usleep($sleep * 10000);
     });
 }
 

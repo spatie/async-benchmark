@@ -5,7 +5,7 @@
         }
     },
     "require": {
-        "spatie/async": "dev-symfony-process",
+        "spatie/async": "dev-master",
         "guzzlehttp/guzzle": "^6.3",
         "symfony/console": "^4.0",
         "larapack/dd": "^1.1",
